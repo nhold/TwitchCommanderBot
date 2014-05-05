@@ -10,24 +10,25 @@ You can look in the TwitchTest project Main to see how to use it, but here is an
 
 - Create a bot
 
-TwitchCommanderBot bot = new TwitchCommanderBot("<TwitchUserNameHere>");
+TwitchCommanderBot bot = new TwitchCommanderBot("[TwitchUserNameHere]");
 
 - Add a command to the bot
 
 bot.AddCommand("a", KeyEvent.VK_Z);
 
 - Create the command task (This will use the TwitchCommanderBots GetNextCommand in it's run method)
+
 CommandTask cmdTask = new CommandTask(bot);
 
 - Connect the bot
 
 try {
-			bot.connect("199.9.250.229", 6667, "<oauth:>");
+			bot.connect("199.9.250.229", 6667, "[oauth:here]");
 		} catch (IOException | IrcException e) {
 			e.printStackTrace();
 		}
 
-- Create the timer for the command task
+- Create the timer for the command task and schedule it
 
 Timer timer = new Timer();
 timer.schedule(cmdTask, 900, 900);
