@@ -6,8 +6,10 @@ import java.util.TimerTask;
 import java.util.Vector;
 
 /**
- *  When a command task is given to a bot it 
- * @author Nathan
+ *  A command task is used to schedule how often each command is called by the bot, so if you
+ *  limit it to the input lag put into your game each command that someone types will get through.
+ * @see java.util.Timer
+ * @author Nathan Hold
  *
  */
 public class CommandTask extends TimerTask {
@@ -16,7 +18,7 @@ public class CommandTask extends TimerTask {
 	Robot virtualKeyboard;
 
     /**
-     * @param bot
+     * @param bot The bot that this command task is linked to.
      * @throws AWTException
      */
     public CommandTask(TwitchCommanderBot bot) throws AWTException
@@ -26,12 +28,13 @@ public class CommandTask extends TimerTask {
 	}
 	
 	public void run() {
-		Vector <String> r = commanderBot.GetNextCommand();
-		if(r != null)
+		Command comm = commanderBot.GetNextCommand();
+
+		if(comm != null)
 		{
-			System.out.println(r.get(1));
-			virtualKeyboard.keyPress(commanderBot.GetKeyForCommand(r.firstElement()));
-			virtualKeyboard.keyRelease(commanderBot.GetKeyForCommand(r.firstElement()));
+			System.out.println(comm.getDisplayText());
+			virtualKeyboard.keyPress(commanderBot.GetKeyForCommand(comm.getActualCommand()));
+			virtualKeyboard.keyRelease(commanderBot.GetKeyForCommand(comm.getActualCommand()));
 		}
 	}
 
