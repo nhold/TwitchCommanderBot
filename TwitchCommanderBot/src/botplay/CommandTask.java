@@ -1,4 +1,4 @@
-package twitchCB;
+package botplay;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -14,8 +14,12 @@ public class CommandTask extends TimerTask {
 
 	TwitchCommanderBot commanderBot;
 	Robot virtualKeyboard;
-	
-	public CommandTask(TwitchCommanderBot bot) throws AWTException
+
+    /**
+     * @param bot
+     * @throws AWTException
+     */
+    public CommandTask(TwitchCommanderBot bot) throws AWTException
 	{
 		commanderBot = bot;
 		virtualKeyboard = new Robot();

@@ -1,4 +1,4 @@
-package twitchCB;
+package botplay;
 
 import java.util.HashMap;
 import java.util.Vector;
