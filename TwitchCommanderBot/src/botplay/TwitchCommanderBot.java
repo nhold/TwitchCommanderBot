@@ -1,6 +1,9 @@
 package botplay;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 import org.jibble.pircbot.*;
 
@@ -11,10 +14,18 @@ import org.jibble.pircbot.*;
  */
 public class TwitchCommanderBot extends PircBot {
 
+    public HashMap<String, Integer> getCommandMap() {
+        return commandMap;
+    }
+
     private HashMap<String, Integer> commandMap;
 
     private CommandQueue commandQueue;
 
+    /**
+     * Default constructor
+     * @param botName The name of the IRC account.
+     */
     public TwitchCommanderBot(String botName) {
         commandQueue = new CommandQueue();
         commandMap = new HashMap<String, Integer>();
@@ -55,6 +66,8 @@ public class TwitchCommanderBot extends PircBot {
     public int GetKeyForCommand(String command) {
         return commandMap.get(command);
     }
+
+
 }
 
 
